@@ -52,10 +52,10 @@ public class CsvFormatStrategy implements FormatStrategy {
     StringBuilder builder = new StringBuilder();
 
     // machine-readable date/time
-    builder.append(Long.toString(date.getTime()));
+//    builder.append(Long.toString(date.getTime()));
 
     // human-readable date/time
-    builder.append(SEPARATOR);
+//    builder.append(SEPARATOR);
     builder.append(dateFormat.format(date));
 
     // level
@@ -67,10 +67,10 @@ public class CsvFormatStrategy implements FormatStrategy {
     builder.append(tag);
 
     // message
-    if (message.contains(NEW_LINE)) {
-      // a new line would break the CSV format, so we replace it here
-      message = message.replaceAll(NEW_LINE, NEW_LINE_REPLACEMENT);
-    }
+//    if (message.contains(NEW_LINE)) {
+//      // a new line would break the CSV format, so we replace it here
+//      message = message.replaceAll(NEW_LINE, NEW_LINE_REPLACEMENT);
+//    }
     builder.append(SEPARATOR);
     builder.append(message);
 
@@ -126,8 +126,7 @@ public class CsvFormatStrategy implements FormatStrategy {
         dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss.SSS", Locale.UK);
       }
       if (logStrategy == null) {
-        String diskPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-        String folder = diskPath + File.separatorChar + "logger";
+        String folder = Environment.getExternalStorageDirectory().getAbsolutePath();
 
         HandlerThread ht = new HandlerThread("AndroidFileLogger." + folder);
         ht.start();

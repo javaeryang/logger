@@ -79,6 +79,17 @@ public final class Logger {
     //no instance
   }
 
+  /**
+   * 初始化默认日志记录器
+   */
+  public static void initDiskLogger(){
+    FormatStrategy formatStrategy = CsvFormatStrategy.newBuilder()
+        .tag("javaer")
+        .build();
+
+    Logger.addLogAdapter(new DiskLogAdapter(formatStrategy));
+  }
+
   public static void printer(@NonNull Printer printer) {
     Logger.printer = checkNotNull(printer);
   }
